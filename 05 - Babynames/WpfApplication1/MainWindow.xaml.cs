@@ -21,6 +21,10 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly List<BabyName> _babyNameCollection = new List<BabyName>();
+        private readonly List<BabyName> _top20Babies = new List<BabyName>();
+        private readonly List<string> _top10BabyNames = new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,38 +33,74 @@ namespace WpfApplication1
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
 
+#region Load all the BabyNames
+
             //Read each line into own string
-            string[] lineArray = System.IO.File.ReadAllLines("05-babynames.txt");
+            var lineArray = System.IO.File.ReadAllLines("05-babynames.txt");
 
-            List<string> NamesAndRanksList = new List<string>();
+            var namesAndRanksList = new List<string>();
 
-            for (int i = 0; i < lineArray.Length; i++)
+
+            //Create All babyname objects
+            foreach (var t in lineArray)
             {
-                NamesAndRanksList.Add(lineArray[i]);
+                _babyNameCollection.Add(new BabyName(t));
+                namesAndRanksList.Add(t);
             }
 
-            //Generate decades
-            List<string> decades = new List<string>();
+#endregion
 
-            for (int i = 1900; i <= 2000; i += 10)
+#region Generate decades and input to ListBox
+            //Generate decades
+            var decades = new List<string>();
+
+            for (var i = 1900; i <= 2000; i += 10)
             {
                 decades.Add(i.ToString());
             }
 
             //Show the decades in listbox
             DecadesListBox.ItemsSource = decades;
-
-            foreach (string item in NamesAndRanksList)
-            {
-                BabyName n = new BabyName(item);
-                
-            }
+#endregion
 
         }
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        public void DetermineTopBabyNames(int decade)
         {
+            //Variables for iterating the top 20 Babynames
+            var firstIndex = 0;
+            var secondIndex = 1;
+            
+            //Clear previous tops
+            _top10BabyNames.Clear();
+            _top20Babies.Clear();
 
+            foreach (
+                var babyName in
+                    _babyNameCollection.Where(babyName => babyName.Rank(decade) < 11 && babyName.Rank(decade) > 0))
+            {
+                _top20Babies.Add(babyName);
+            }
+
+            _top20Babies.Sort((a, b) => a.Rank(decade).CompareTo(b.Rank(decade)));
+            
+            for (var i = 1; i < 11; i++)
+            {
+                _top10BabyNames.Add(i + " ");
+            }
+            
+            for (var i = 0; i < 10; i++)
+            {
+                _top10BabyNames[i] += (_top20Babies[i+firstIndex++].Name + " and " + _top20Babies[i+secondIndex++].Name);
+            }
+
+            TopTenListBox.ItemsSource = _top10BabyNames;
+            TopTenListBox.Items.Refresh();
+        }
+
+        private void DecadesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DetermineTopBabyNames((DecadesListBox.SelectedIndex) * 10 + 1900);
         }
     }
 }
