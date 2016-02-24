@@ -102,5 +102,20 @@ namespace WpfApplication1
         {
             DetermineTopBabyNames((DecadesListBox.SelectedIndex) * 10 + 1900);
         }
+
+        private void SmallMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            FontSize = 10;
+        }
+
+        private void MediumMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            FontSize = 12;
+        }
+
+        private void LargeMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            FontSize = 14;
+        }
     }
 }
