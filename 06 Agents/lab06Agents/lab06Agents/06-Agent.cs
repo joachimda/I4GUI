@@ -19,7 +19,7 @@ namespace I4GUI
       {
       }
 
-      public Agent(string aId, string aName, string aAddress, string aSpeciality, string aAssignment)
+      public Agent(string aId, string aName, string aSpeciality, string aAssignment)
       {
          id = aId;
          codeName = aName;
