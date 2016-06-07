@@ -1,9 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>JavaJam Coffee House</title>
+    <title>Jobs</title>
     <meta charset="utf-8">
     <link href="javacoffee.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="img/favicon.ico" rel="shortcut icon" />
 </head>
 
@@ -26,23 +27,15 @@
 
         <div id="content">
             Want to work at JavaJam? Fill out the form below to start your application. <br> <br />
-            <table>
-                <tr>
-                    <td>Name</td>
-                    <td><form><input type="text" name="name" /></form></td>
-                </tr>
-                
-                <tr>
-                    <td>E-Mail</td>
-                    <td><form><input type="text" name="email" /></form></td>
-                </tr>
-
-                <tr>
-                    <td>Experience</td>
-                    <td><form><input type="text" name="exp"/></form></td>
-                </tr>
-            </table>
-
+            <form method="post" action="http://webdevbasics.net/scripts/javajam.php">
+                <label for="aName">*Name:</label>
+                <input type="text" name="aName" id="aName" required="required" />
+                <label for="aEmail">*E-mail:</label>
+                <input type="email" name="aEmail" id="aEmail" required="required" />
+                <label for="aExpirience">*Expirience:</label>
+                <textarea name="aExpirience" id="aExpirience" rows="4" cols="30"></textarea>
+                <input id="mySubmit" type="submit" value="Apply Now" />
+            </form>
         </div>
         <footer>
             Copyright &copy; 2013 JavaJam Coffee House<br>

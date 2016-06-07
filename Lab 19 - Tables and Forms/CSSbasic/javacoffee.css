@@ -12,14 +12,6 @@ header {
     margin: 0;
 }
 
-tr:nth-child(odd) {
-    background-color: #ccaa66;
-}
-
-td:first-child {
-    font-weight: bold;
-}
-
 nav {
     text-align: center;
     float: left;
@@ -49,7 +41,7 @@ nav a {
         color: #330000;
     }
 
-nav ul {    /*Removes listing dot*/
+nav ul {
     list-style-type: none;
 }
 
@@ -79,7 +71,7 @@ footer {
 #wrapper {
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 90%;
     background-color: #ffffcc;
     min-width: 700px;
     -webkit-box-shadow: 5px 5px 5px #828282;
@@ -111,14 +103,47 @@ h2 {
     color: #000000;
 }
 
-.floatright { padding-left: 20px;
-             float: right; }  
-.floatleft { padding-right: 20px;
-            padding-bottom: 20px;
-            float: left; } 
+.floatright {
+    padding-left: 20px;
+    float: right;
+}
+
+.floatleft {
+    padding-right: 20px;
+    padding-bottom: 20px;
+    float: left;
+}
 
 img {
     border-style: none;
 }
 
-header, nav, figure, footer { display: block; }
+header, nav, figure, footer {
+    display: block;
+}
+
+tr:nth-of-type(odd) {
+    background-color: #ccaa66;
+}
+
+form {
+    padding: 10px;
+}
+
+label {
+    float: left;
+    width: 100px;
+    display: block;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+input, textarea {
+    margin-top: 10px;
+    display: block;
+}
+
+#mySubmit {
+    margin-left: 110px;
+}
