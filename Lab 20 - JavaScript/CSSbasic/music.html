@@ -24,7 +24,7 @@
 
 
         <div id="content">
-            <p>The first Friday night each month at JavaJam is a special night. Join us from 8pm to 11pm for some music you won&rsquo;t want to miss!</p>
+            <p id="intro">The first Friday night each month at JavaJam is a special night. Join us from 8pm to 11pm for some music you won&rsquo;t want to miss!</p>
             <h2>January</h2>
             <p class="details">
                 <a href="img/melanie.jpg">
@@ -42,16 +42,23 @@
             </p>
         </div>
 
-        <footer>
+        <footer id="footer">
             Copyright &copy; 2013 JavaJam Coffee House<br>
             <a href="mailto:yourfirstname@yourlastname.com">yourfirstname@yourlastname.com</a>
         </footer>
     </div>
 
     <script type="text/javascript">
-    var footerNote = document.getElementById('footer');
-    var newHtml = footerNote.innerHTML + "<p>Page last modified: " + document.lastModified + "</p>";
-    footerNote.innerHTML = newHtml;
+        var footerNode = document.getElementById('footer');
+        var newHtml = footerNode.innerHTML + "<p>Page last modified: " + document.lastModified + "</p>";
+        footerNode.innerHTML = newHtml;
+
+        var headText = document.getElementById("intro");
+        headText.addEventListener("mouseover", function() {
+            alert('Concerts soon sold out!');
+        });
+
+
     </script>
 </body>
 </html>
