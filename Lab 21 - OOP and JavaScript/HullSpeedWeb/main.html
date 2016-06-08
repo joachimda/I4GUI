@@ -6,35 +6,31 @@
     <link href="Sailboat.css" rel="stylesheet"/>
 </head>
 <body>
+    <div id="picture">
+        <img src="Sailboat.jpg" id="sailboat" alt="Picture of sailboat" />
+    </div>
+    <div id="content">
+        <h1>Webpage to calculate hull speed</h1>
 
-<div id="picture">
-    <img src="sailboat.jpg" id="sailboatPicture" alt="Picture of a sailboat"/>
-</div>
-
-<div id="content">
-    <header>
-        <h1>
-            Webpage to calculate hullspeed
-        </h1>
-    </header>
-    <div class="row">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" />
+        <div class="row">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" />
+        </div>
+        <div class="row">
+            <label for="length">Length:</label>
+            <input type="number" name="length" id="length" />
+            <span id="lengthUnit">feet</span>
+        </div>
+        <div class="row">
+            <input id="calculateHullSpeed" type="submit" value="Calculate" />
+        </div>
+        <div class="row">
+            <label>Hull Speed:</label>
+            <input type="number" name="result" id="result" readonly="readonly" />
+            <span id="speedUnit">knots</span>
+        </div>
     </div>
-    <div class="row">
-        <label for="length">Length:</label>
-        <input type="number" name="length" id="length" />
-        <span id="lengthUnit">feet</span>
-    </div>
-    <div class="row">
-        <input id="calculateHullSpeed" type="submit" value="Calculate" />
-    </div>
-    <div class="row">
-        <label>Hull Speed:</label>
-        <input type="number" name="result" id="result" readonly="readonly" />
-        <span id="speedUnit">knots</span>
-    </div>
-</div>
-
+    <script src="SailboatClass.js"></script>
+    <script src="Context.js"></script>
 </body>
 </html>

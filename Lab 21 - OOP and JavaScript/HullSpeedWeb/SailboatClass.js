@@ -1,4 +1,4 @@
-﻿function sailboat() {
+﻿function Sailboat() {
     var name;
     var lenght;
 
@@ -17,7 +17,7 @@
     }
 
     //Member function to calculate the hullspeed
-    this.hullSpeed = function() {
+    this.hullspeed = function() {
         return 1.34 * Math.sqrt(lenght);
     }
 }

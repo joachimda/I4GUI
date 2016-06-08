@@ -58,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Context.js" />
     <Content Include="main.html" />
     <Content Include="Sailboat.css" />
     <Content Include="SailboatClass.js" />
