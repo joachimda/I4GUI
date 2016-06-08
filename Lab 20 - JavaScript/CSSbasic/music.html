@@ -13,7 +13,7 @@
             </h1>
         </header>
 
-        <nav>
+        <nav id="menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
@@ -55,11 +55,23 @@
 
         var cnt = 0;
         var headText = document.getElementById("intro");
-        headText.addEventListener("mouseover", function() {
-            if(cnt === 0)
+        headText.addEventListener("mouseover", function () {
+            if (cnt === 0)
                 alert('Concerts soon sold out!');
             cnt++;
         });
+
+        var menu = getElementById("menu");
+        for (i = 0; i < menu.length; i++) {
+            menu[i].addEventListener("mouseover", function(event) {
+                var target = event.target || event.srcElement;
+                target.className = "menuEnhanced"
+            });
+            menu[i].addEventListener("mouseout", function(event) {
+                var taget = event.target || event.srcElement;
+                target.className = "menu";
+            });
+        };
 
 
     </script>
