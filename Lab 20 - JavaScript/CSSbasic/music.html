@@ -53,9 +53,12 @@
         var newHtml = footerNode.innerHTML + "<p>Page last modified: " + document.lastModified + "</p>";
         footerNode.innerHTML = newHtml;
 
+        var cnt = 0;
         var headText = document.getElementById("intro");
         headText.addEventListener("mouseover", function() {
-            alert('Concerts soon sold out!');
+            if(cnt === 0)
+                alert('Concerts soon sold out!');
+            cnt++;
         });
 
 
