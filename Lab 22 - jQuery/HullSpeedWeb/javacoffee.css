@@ -154,3 +154,6 @@ input, textarea {
     font-weight:bold;
 }
 
+.toggler {
+    position: absolute;
+}

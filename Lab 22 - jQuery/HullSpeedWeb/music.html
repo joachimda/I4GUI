@@ -26,20 +26,32 @@
         <div id="content">
             <p id="intro">The first Friday night each month at JavaJam is a special night. Join us from 8pm to 11pm for some music you won&rsquo;t want to miss!</p>
             <h2>January</h2>
-            <p class="details">
-                <a href="img/melanie.jpg">
-                    <img src="img/melaniethumb.jpg" height="80" width="80" alt="Melanie Morris">
-                </a>
+            <div class="details">
+                <figure class="floatleft">
+                    <a id="melaniethumb" href="images/melanie.jpg">
+                        <img src="img/melaniethumb.jpg" height="80" width="80" alt="Melanie Morris" />
+                    </a>
+                </figure>
                 Melanie Morris entertains with her melodic folk style.
                 Check out the podcast! CDs are now available.
-            </p>
+                <div id="melanie">
+                    <img src="img/melanie.jpg" height="275" width="275" alt="Melanie Morris" />
+                </div>
+            </div>
             <h2>February</h2>
-            <p class="details">
-                <a href="img/greg.jpg">
-                    <img src="img/gregthumb.jpg" height="80" width="80" alt="Tahoe Greg">
-                </a>
+            <div class="details">
+                <figure class="floatleft">
+                    <a id="gregthumb" href="images/greg.jpg">
+                        <img src="img/gregthumb.jpg" height="80" width="80" alt="Tahoe Greg" />
+                    </a>
+                </figure>
                 Tahoe Greg&rsquo;s back from his tour. New songs. New stories. CDs are now available.
-            </p>
+
+                <div id="greg" class="toggler">
+                    <img src="img/greg.jpg" height="275" width="275" alt="Tahoe Greg" />
+                </div>
+            </div>
+            <br class="clear" />
         </div>
 
         <footer id="footer">
@@ -48,19 +60,18 @@
         </footer>
     </div>
 
-<!--<var cnt = 0;
-    var headText = document.getElementById("intro");
-    headText.addEventListener("mouseover", function() {
-        if (cnt === 0)
-            alert('Concerts soon sold out!');
-        cnt++;
-    });
-</script> -->
-
+    <!--<var cnt = 0;
+        var headText = document.getElementById("intro");
+        headText.addEventListener("mouseover", function() {
+            if (cnt === 0)
+                alert('Concerts soon sold out!');
+            cnt++;
+        });
+    </script> -->
     <!-- jQeury scripts and own scripts here -->
     <script src="Scripts/jquery-2.2.3.js"></script>
     <script src="Scripts/jquery-ui-1.11.4.js"></script>
-    <script src="coffeeScript.js"></script>
+    <script src="Scripts/coffeeScript.js"></script>
 
 </body>
 </html>
