@@ -15,10 +15,10 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="music.html">Music</a></li>
-                <li><a href="jobs.html">Jobs</a></li>
+                <li class="menu"><a href="index.html">Home</a></li>
+                <li class="menu"><a href="menu.html">Menu</a></li>
+                <li class="menu"><a href="music.html">Music</a></li>
+                <li class="menu"><a href="jobs.html">Jobs</a></li>
             </ul>
         </nav>
 
@@ -48,32 +48,21 @@
         </footer>
     </div>
 
-    <script type="text/javascript">
-        var footerNode = document.getElementById('footer');
-        var newHtml = footerNode.innerHTML + "<p>Page last modified: " + document.lastModified + "</p>";
-        footerNode.innerHTML = newHtml;
+<script type="text/javascript">
+    var footerNode = document.getElementById('footer');
+    var newHtml = footerNode.innerHTML + "<p>Page last modified: " + document.lastModified + "</p>";
+    footerNode.innerHTML = newHtml;
 
-        var cnt = 0;
-        var headText = document.getElementById("intro");
-        headText.addEventListener("mouseover", function () {
-            if (cnt === 0)
-                alert('Concerts soon sold out!');
-            cnt++;
-        });
+    var cnt = 0;
+    var headText = document.getElementById("intro");
+    headText.addEventListener("mouseover", function() {
+        if (cnt === 0)
+            alert('Concerts soon sold out!');
+        cnt++;
+    });
+</script>
 
-        var menu = getElementById("menu");
-        for (i = 0; i < menu.length; i++) {
-            menu[i].addEventListener("mouseover", function(event) {
-                var target = event.target || event.srcElement;
-                target.className = "menuEnhanced"
-            });
-            menu[i].addEventListener("mouseout", function(event) {
-                var taget = event.target || event.srcElement;
-                target.className = "menu";
-            });
-        };
+    <script src="coffeeScript.js"></script>
 
-
-    </script>
 </body>
 </html>

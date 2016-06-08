@@ -64,7 +64,7 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="javacoffee.css" />
-    <Content Include="JavaScript.js" />
+    <Content Include="coffeeScript.js" />
     <Content Include="jobs.html" />
     <Content Include="menu.html" />
     <Content Include="music.html" />

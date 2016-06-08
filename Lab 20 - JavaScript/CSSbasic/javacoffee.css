@@ -3,6 +3,7 @@
     background-image: url(images/background.gif);
     color: #330000;
     font-family: Verdana,Arial, sans-serif;
+    
 }
 
 header {
@@ -150,5 +151,6 @@ input, textarea {
 
 .menuEnhanced {
     font-size: 1.25em;
-    font-weight: bold;
+    font-weight:bold;
 }
+
