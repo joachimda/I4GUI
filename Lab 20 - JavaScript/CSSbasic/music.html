@@ -7,10 +7,22 @@
 </head>
 <body>
     <div id="wrapper">
-        <h1>
-            <img src="img/javalogo.gif" alt="JavaJam Coffee House" height="117" width="619">
-        </h1>
-        <div id="nav"><a href="index.html">Home</a> &nbsp;&nbsp;<a href="menu.html">Menu</a> &nbsp;&nbsp;<a href="music.html">Music</a> &nbsp;&nbsp;<a href="jobs.html">Jobs</a></div>
+        <header>
+            <h1>
+                <img src="img/javalogo.gif" alt="JavaJam Coffee House" height="117" width="619">
+            </h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+            </ul>
+        </nav>
+
+
         <div id="content">
             <p>The first Friday night each month at JavaJam is a special night. Join us from 8pm to 11pm for some music you won&rsquo;t want to miss!</p>
             <h2>January</h2>
@@ -29,11 +41,17 @@
                 Tahoe Greg&rsquo;s back from his tour. New songs. New stories. CDs are now available.
             </p>
         </div>
-        <div id="footer">
+
+        <footer>
             Copyright &copy; 2013 JavaJam Coffee House<br>
             <a href="mailto:yourfirstname@yourlastname.com">yourfirstname@yourlastname.com</a>
-        </div>
+        </footer>
     </div>
 
+    <script type="text/javascript">
+    var footerNote = document.getElementById('footer');
+    var newHtml = footerNote.innerHTML + "<p>Page last modified: " + document.lastModified + "</p>";
+    footerNote.innerHTML = newHtml;
+    </script>
 </body>
 </html>
