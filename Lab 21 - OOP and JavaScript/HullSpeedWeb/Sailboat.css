@@ -1,0 +1,37 @@
+﻿
+#content {
+    padding: 10px;
+    margin: 10px;
+    background-color: #f2eab7;
+    color: #000000;
+}
+
+h1 {
+    margin: 3px;
+}
+
+.row {
+    display: block;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+label {
+    float: left;
+    width: 100px;
+
+    text-align: right;
+    padding-right: 10px;
+
+}
+
+
+#picture {
+    float: right;
+    margin-right: 10px;
+}
+
+#calculateHullSpeed {
+    margin-left: 110px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
