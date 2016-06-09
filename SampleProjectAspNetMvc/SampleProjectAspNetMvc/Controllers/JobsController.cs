@@ -40,6 +40,7 @@ namespace SampleProjectAspNetMvc.Controllers
                 List<UserInfo> users = new List<UserInfo>();
                 users.Add(user);
 
+                //Serialize object for other use
                 json.Serialize(users);
 
                 return View("Confirmation");
