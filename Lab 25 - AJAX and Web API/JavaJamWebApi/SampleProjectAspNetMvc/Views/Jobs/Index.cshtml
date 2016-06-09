@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Jobs";
+}
+
+<p>Want to work at JavaJam? Fill out the form below to start your application. Required fields are marked with an asterisk *.</p>
+
+<form method="post" action="/Jobs/Create">
+    <label for="aName">*Name:</label>
+    <input type="text" name="aName" id="aName" required="required" />
+    <label for="aEmail">*E-mail:</label>
+    <input type="email" name="aEmail" id="aEmail" required="required" />
+    <label for="aExperience">*Experience:</label>
+    <textarea name="aExperience" id="aExperience" rows="4" cols="30" required="required"></textarea>
+    <input id="mySubmit" type="submit" value="Apply Now" />
+</form>

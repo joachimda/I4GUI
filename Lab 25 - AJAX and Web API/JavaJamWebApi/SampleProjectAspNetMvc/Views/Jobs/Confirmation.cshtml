@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Confirmation";
+    var userData = "";
+
+    
+
+    var dataFile = Server.MapPath("~/App_Data/data.json");
+
+    userData = System.IO.File.ReadAllLines(dataFile).Last<string>();
+
+    if (userData == "")
+    {
+        userData = "The file is empty";
+    }
+}
+
+<h3>Confirmation</h3>
+
+<i>We have recieved your application:</i>
+<p>@userData</p>
+
+

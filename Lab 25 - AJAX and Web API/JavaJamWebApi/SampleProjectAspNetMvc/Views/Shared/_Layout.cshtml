@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaJam Coffee House @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    <link href="~/Content/javajammobile.css" rel="stylesheet" media="only screen and (max-device-width: 680px)" />
+    @Scripts.Render("~/bundles/modernizr")
+
+    <meta name="description" content="Just a demo" />
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>
+                JavaJam Coffee House
+            </h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="/Home/Index">Home</a></li>
+                <li><a href="/Home/Menu">Menu</a></li>
+                <li>@Html.ActionLink("Music", "Index", "Music", null, new {id = "musicLink"})</li>
+                <li>@Html.ActionLink("Jobs", "Index", "Jobs")</li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            @RenderBody()
+        </div>
+
+        <footer>
+            Copyright &copy; 2015 JavaJam Coffee House<br />
+            <a href="mailto:yourfirstname@yourlastname.com">yourfirstname@yourlastname.com</a>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
