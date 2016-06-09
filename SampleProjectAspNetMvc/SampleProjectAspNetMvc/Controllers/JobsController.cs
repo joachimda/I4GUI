@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
+using SampleProjectAspNetMvc.Models;
 
 namespace SampleProjectAspNetMvc.Controllers
 {
@@ -14,17 +16,6 @@ namespace SampleProjectAspNetMvc.Controllers
             return View();
         }
 
-        // GET: Jobs/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Jobs/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
         // POST: Jobs/Create
         [HttpPost]
@@ -32,58 +23,39 @@ namespace SampleProjectAspNetMvc.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                //Using Json and user object
+                UserInfo user = new UserInfo
+                {
+                    Experience = Request["aExperience"],
+                    MailAddress = collection["aEmail"],
+                    Name = collection["aName"]
+                };
+
+                return View("Confirmation");
             }
             catch
             {
-                return View();
+                return View("Error");
             }
-        }
 
-        // GET: Jobs/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+            /*Standard method using System.IO*/
+                //    var name = collection["aName"];
+                //    var email = collection["aEmail"];
+                //    var experience = Request["aExperience"];
+                //    var userData = "Name:" + name + ", E-Mail: " + email + ", Experience:" + experience +
+                //                   Environment.NewLine;
 
-        // POST: Jobs/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+                //    var file = Server.MapPath("~/App_Data/data.txt");
+                //    System.IO.File.AppendAllText(@file,userData);
 
-                return RedirectToAction("Index");
+                //    return View("Confirmation");
+                //}
+                //catch
+                //{
+                //    return View("Error");
+                //}
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: Jobs/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Jobs/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
