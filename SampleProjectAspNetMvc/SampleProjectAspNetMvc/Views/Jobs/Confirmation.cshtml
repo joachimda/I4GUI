@@ -3,8 +3,9 @@
     ViewBag.Title = "Confirmation";
     var userData = "";
 
+    
 
-    var dataFile = Server.MapPath("~/App_Data/data.txt");
+    var dataFile = Server.MapPath("~/App_Data/data.json");
 
     userData = System.IO.File.ReadAllLines(dataFile).Last<string>();
 

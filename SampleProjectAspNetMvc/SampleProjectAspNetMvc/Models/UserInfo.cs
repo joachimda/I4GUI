@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Net.Mail;
+using System.Runtime.Serialization;
 using System.Web;
 using Microsoft.Ajax.Utilities;
 

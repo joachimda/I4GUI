@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
+using json;
 using SampleProjectAspNetMvc.Models;
 
 namespace SampleProjectAspNetMvc.Controllers
@@ -31,6 +33,14 @@ namespace SampleProjectAspNetMvc.Controllers
                     MailAddress = collection["aEmail"],
                     Name = collection["aName"]
                 };
+
+               
+                Json json = new Json();
+
+                List<UserInfo> users = new List<UserInfo>();
+                users.Add(user);
+
+                json.Serialize(users);
 
                 return View("Confirmation");
             }
