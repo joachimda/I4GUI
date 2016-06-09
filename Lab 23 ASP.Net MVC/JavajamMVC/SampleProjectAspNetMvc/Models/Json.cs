@@ -14,7 +14,7 @@ namespace json
 {
     public class Json
     {
-        private string path = @"F:/Cygwin64/home/Mr. Derp/Git repos/I4GUI - Joachim/SampleProjectAspNetMvc/SampleProjectAspNetMvc/App_Data/data.json";
+        private string path = @"F:\Cygwin64\home\Mr. Derp\Git repos\I4GUI - Joachim\Lab 23 ASP.Net MVC\JavajamMVC\SampleProjectAspNetMvc\App_Data\data.json";
         public void Serialize(List<UserInfo> list)
         {
             string jsonOut = JsonConvert.SerializeObject(list);
@@ -31,7 +31,7 @@ namespace json
             List<UserInfo> s = new List<UserInfo>();
             try
             {
-                string json = File.ReadAllText("~/App_Data/data.json");
+                string json = File.ReadAllText(path);
                 s = JsonConvert.DeserializeObject<List<UserInfo>>(json);
             }
             catch (Exception)
