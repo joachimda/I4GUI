@@ -11,6 +11,10 @@ namespace SampleProjectAspNetMvc.Controllers
         // GET: Music
         public ActionResult Index()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
             return View();
         }
     }

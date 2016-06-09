@@ -10,12 +10,22 @@ namespace SampleProjectAspNetMvc.Controllers
     {
         public ActionResult Index()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
+
             return View();
         }
 
 
         public ActionResult Menu()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
+
             return View();
         }
        

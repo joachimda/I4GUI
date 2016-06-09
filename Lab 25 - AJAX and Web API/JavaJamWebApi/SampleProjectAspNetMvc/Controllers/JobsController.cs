@@ -15,6 +15,11 @@ namespace SampleProjectAspNetMvc.Controllers
         // GET: Jobs
         public ActionResult Index()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("JobsAjax");
+            }
+
             return View();
         }
 
@@ -27,38 +32,21 @@ namespace SampleProjectAspNetMvc.Controllers
             {
 
                 //Using Json and user object
-                UserInfo user = new UserInfo
-                {
-                    Experience = Request["aExperience"],
-                    MailAddress = collection["aEmail"],
-                    Name = collection["aName"]
-                };
+                //    UserInfo user = new UserInfo
+                //    {
+                //        Experience = Request["aExperience"],
+                //        MailAddress = collection["aEmail"],
+                //        Name = collection["aName"]
+                //    };
 
-               
-                Json json = new Json();
 
-                List<UserInfo> users = new List<UserInfo>();
-                users.Add(user);
+                //    Json json = new Json();
 
-                //Serialize object for other use
-                json.Serialize(users);
+                //    List<UserInfo> users = new List<UserInfo>();
+                //    users.Add(user);
 
-                return View("Confirmation");
-            }
-            catch
-            {
-                return View("Error");
-            }
-
-            /*Standard method using System.IO*/
-                //    var name = collection["aName"];
-                //    var email = collection["aEmail"];
-                //    var experience = Request["aExperience"];
-                //    var userData = "Name:" + name + ", E-Mail: " + email + ", Experience:" + experience +
-                //                   Environment.NewLine;
-
-                //    var file = Server.MapPath("~/App_Data/data.txt");
-                //    System.IO.File.AppendAllText(@file,userData);
+                //    //Serialize object for other use
+                //    json.Serialize(users);
 
                 //    return View("Confirmation");
                 //}
@@ -66,7 +54,33 @@ namespace SampleProjectAspNetMvc.Controllers
                 //{
                 //    return View("Error");
                 //}
+
+                /*Standard method using System.IO*/
+                var name = collection["aName"];
+                var email = collection["aEmail"];
+                var experience = Request["aExperience"];
+                var userData = "Name:" + name + ", E-Mail: " + email + ", Experience:" + experience +
+                               Environment.NewLine;
+
+                var file = Server.MapPath("~/App_Data/data.txt");
+                System.IO.File.AppendAllText(@file, userData);
+
+
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("Confirmation");
+                }
+                return View("Confirmation");
             }
+            catch
+            {
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("Error");
+                }
+                return View("Error");
+            }
+        }
 
     }
 }
