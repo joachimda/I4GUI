@@ -22,16 +22,18 @@ namespace MedDispenser.Controllers
         public ActionResult Create(FormCollection collection)
         {
             JsonToolbox json = new JsonToolbox();
-            List<MedRule> rules = new List<MedRule>(); 
+            List<MedRule> rules = new List<MedRule>();
+            rules = json.DeSerialize();
 
             try
             {
                 MedRule rule = new MedRule
                 {
-                    Comment = collection["comment"],
+                    Comment = Request["comment"],
                     MedicineType = collection["type"],
                     TimeToTake = collection["time"]
                 };
+
                 rules.Add(rule);
                 
                 json.Serialize(rules);

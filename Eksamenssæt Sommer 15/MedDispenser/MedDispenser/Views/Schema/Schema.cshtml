@@ -9,7 +9,6 @@
 <table class="table table-striped table-hover" id="schema">
     <thead>
         <tr>
-            <th>#</th>
             <th>Time</th>
             <th>Medication</th>
             <th>Comment</th>
@@ -20,7 +19,20 @@
 
         JsonToolbox jt = new JsonToolbox();
 
-        
+        var list = jt.DeSerialize();
+
+        var q = from item in list
+            select item;
+
+
+        foreach (var t in q)
+        {
+            <tr>
+                <td>@t.TimeToTake</td>
+                <td>@t.MedicineType</td>
+                <td>@t.Comment</td>
+            </tr>
+        }
     }
     </tbody>
 </table>
