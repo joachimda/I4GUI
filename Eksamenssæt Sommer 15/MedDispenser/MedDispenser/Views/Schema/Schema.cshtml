@@ -1,5 +1,4 @@
-﻿@using DataAccess
-
+﻿@using MedDispenser.Models
 @{
     ViewBag.Title = "Schema";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,9 +16,12 @@
         </tr>
     </thead>
     <tbody>
-        @{
-            //add code to read from json file
-        }
+    @{
+
+        JsonToolbox jt = new JsonToolbox();
+
+        
+    }
     </tbody>
 </table>
 

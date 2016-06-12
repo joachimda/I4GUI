@@ -21,7 +21,7 @@ namespace MedDispenser.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            Json json = new Json();
+            JsonToolbox json = new JsonToolbox();
             List<MedRule> rules = new List<MedRule>(); 
 
             try
