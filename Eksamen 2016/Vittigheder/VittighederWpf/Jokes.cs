@@ -34,9 +34,17 @@ namespace VittighederWpf
 
         private void AddJoke()
         {
-            Add(new Joke());
-            NotifyPropertyChanged("Count");
-            CurrentIndex = Count - 1;
+            AddDlg dlg = new AddDlg();
+
+            if (dlg.ShowDialog() == true)
+            {
+                Add(new Joke());
+                NotifyPropertyChanged("Count");
+                CurrentIndex = Count - 1;
+            }
+            
+
+
         }
 
         ICommand _SaveCommand;

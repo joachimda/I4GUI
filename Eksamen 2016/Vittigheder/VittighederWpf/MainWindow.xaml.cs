@@ -23,17 +23,16 @@ namespace VittighederWpf
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void LbJokes_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            /*
             var selected = (ListBox)sender;
             object item = selected.SelectedItem;
 
             //Query for name in Json file
-            /*
+
             var q = from item in jsonJokes
                     where item.Name ==  selected
                     select item;
@@ -45,12 +44,22 @@ namespace VittighederWpf
 
             var joke = q.First();
 
-            jokeDlg dlg = new jokeDlg(joke.Name, joke.Setup, joke.tags);
+            if (joke.IsRiddle == false)
+            {
 
-            dlg.Owner = this;
-            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            dlg.ShowDialog(); //Modal dialog
+                jokeDlg dlg = new jokeDlg(joke.Name, joke.Setup, joke.tags);
 
+                dlg.Owner = this;
+                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                dlg.ShowDialog(); //Modal dialog
+            }
+
+            else if (joke.IsRiddle == true)
+            {
+                riddleDlg = new riddleDlg(joke.Name, joke.Setup, joke.Punchline, joke.tags
+                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                dlg.ShowDialog(); //Modal dialog
+            }
             */
 
 

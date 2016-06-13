@@ -26,10 +26,10 @@
             <TabItem Header="Main">
                 <Grid Background="#ffffb3">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="17*"/>
-                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="89*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btnAdd" Grid.Column="0" Grid.RowSpan="1" Content="Add Joke" HorizontalAlignment="Left" Margin="43,24,0,0" VerticalAlignment="Top" Width="160" Height="60" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnAdd" Grid.Column="0" Grid.RowSpan="1" Content="Add Joke" HorizontalAlignment="Left" Margin="43,24,0,0" VerticalAlignment="Top" Width="160" Height="60" Grid.ColumnSpan="2" Command="{Binding AddCommand}"/>
                     <Button x:Name="btnSearch" Content="Search jokes" HorizontalAlignment="Left" Margin="43,140,0,0" VerticalAlignment="Top" Width="160" Height="60" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
