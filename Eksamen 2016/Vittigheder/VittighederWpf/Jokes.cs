@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -10,22 +11,27 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace VittighederWpf
 {
     class Jokes : ObservableCollection<Joke>, INotifyPropertyChanged
     {
+        private readonly string _path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\wpfData.json";
+
         public Jokes()
         {
             //if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
                 // In Design mode
                 Add(new Joke("kylling1", new List<string>(new string[] { "gåde", "kylling", "plat" }), "PHP-Bog", "Hvorfor gik kyllingen over vejen", "For at komme over på den anden side"));
-                Add(new Joke("bar1", new List<string>(new string[] { "bar", "something", "plat" }), "internet", "Some dude walks into a bar...", ""));
+                Add(new Joke("bar1", new List<string>(new string[] { "bar", "something", "plat" }), "internet", "Some dude walks into a bar..."));
             }
         }
 
         ICommand _addCommand;
+        ICommand _SaveCommand;
+        ICommand _loadCommand;
 
         public ICommand AddCommand
         {
@@ -38,40 +44,48 @@ namespace VittighederWpf
 
             if (dlg.ShowDialog() == true)
             {
-                Add(new Joke());
+                string[] tagArray = {};
+                tagArray = new[] {string.Join(",", dlg.JokeTagsUnified)};
+                List<string> tagsList = new List<string>();
+
+                foreach (var item in tagArray)
+                {
+                    tagsList.Add(item);
+                }
+
+                Add(new Joke(dlg.JokeName, tagsList, dlg.JokeAuthor,dlg.JokeSetup, dlg.JokePunchline));
                 NotifyPropertyChanged("Count");
                 CurrentIndex = Count - 1;
             }
-            
-
-
         }
 
-        ICommand _SaveCommand;
+        public ICommand LoadCommand { get
+        {
+            return _loadCommand ?? (_loadCommand = new RelayCommand(LoadFileCommand_Execute));}
+        }
+        
         public ICommand SaveCommand
         {
-            get { return _SaveCommand ?? (_SaveCommand = new RelayCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)); }
+            get { return _SaveCommand ?? (_SaveCommand = new RelayCommand(SaveFileCommand_Execute)); }
+        }
+
+        private void LoadFileCommand_Execute()
+        {
+            
         }
 
         private void SaveFileCommand_Execute()
         {
-            // Create an instance of the XmlSerializer class and specify the type of object to serialize.
-            XmlSerializer serializer = new XmlSerializer(typeof(Jokes));
-            TextWriter writer = new StreamWriter(filename);
-            // Serialize all the agents.
-            serializer.Serialize(writer, this);
-            writer.Close();
+            string jsonOut = JsonConvert.SerializeObject(this);
+            using (StreamWriter streamWriter = new StreamWriter(_path))
+            {
+                streamWriter.Write(jsonOut);
+                streamWriter.Close();
+            }
         }
-
-        private bool SaveFileCommand_CanExecute()
-        {
-            return (filename != "") && (Count > 0);
-        }
-
-        int currentIndex = -1;
 
         #region Properties
-
+        int currentIndex = -1;
         public int CurrentIndex
         {
             get { return currentIndex; }
@@ -84,7 +98,6 @@ namespace VittighederWpf
                 }
             }
         }
-        string filename = "";
 
         #endregion 
 

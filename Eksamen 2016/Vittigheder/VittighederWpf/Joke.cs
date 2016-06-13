@@ -6,9 +6,14 @@ namespace VittighederWpf
     [Serializable]
     public class Joke
     {
-        public Joke()
+        public Joke(string name, List<string> tags, string source, string setup)
         {
-            
+            Name = name;
+            Tags = tags;
+            Source = source;
+            Setup = setup;
+            Time = DateTime.Now;
+            IsRiddle = false;
         }
         public Joke(string name, List<string> tags, string source, string setup, string punchline)
         {
@@ -18,6 +23,7 @@ namespace VittighederWpf
             Setup = setup;
             Punchline = punchline;
             Time = DateTime.Now;
+            IsRiddle = true;
         }
         public DateTime Time { get; set; }
         public string Name { get; set; }

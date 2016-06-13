@@ -25,44 +25,40 @@ namespace VittighederWpf
             InitializeComponent();
         }
 
+
         private void LbJokes_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            /*
+            //    Jokes j = new Jokes();
             var selected = (ListBox)sender;
-            object item = selected.SelectedItem;
 
-            //Query for name in Json file
+            Joke selectedItem = (Joke)selected.SelectedItem;
+            String author = selectedItem.Source;
+            string setup = selectedItem.Setup;
+            List<string> tags = selectedItem.Tags;
+            string punchline = selectedItem.Punchline;
 
-            var q = from item in jsonJokes
-                    where item.Name ==  selected
-                    select item;
-
-            if (q.Count() > 1)
+            if (selectedItem.IsRiddle)
             {
-                throw new ArgumentException("Something went wrong")
+                riddleDlg dlg = new riddleDlg(author, setup,punchline,tags);
+                dlg.Owner = this;
+                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                dlg.ShowDialog();
             }
 
-            var joke = q.First();
-
-            if (joke.IsRiddle == false)
+            else
             {
-
-                jokeDlg dlg = new jokeDlg(joke.Name, joke.Setup, joke.tags);
+                jokeDlg dlg = new jokeDlg(author, setup, tags);
 
                 dlg.Owner = this;
                 dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 dlg.ShowDialog(); //Modal dialog
             }
+            
 
-            else if (joke.IsRiddle == true)
-            {
-                riddleDlg = new riddleDlg(joke.Name, joke.Setup, joke.Punchline, joke.tags
-                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                dlg.ShowDialog(); //Modal dialog
-            }
-            */
+        }
 
-
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

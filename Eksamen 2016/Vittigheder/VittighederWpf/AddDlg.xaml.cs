@@ -20,19 +20,25 @@ namespace VittighederWpf
     public partial class AddDlg : Window
     {
         public string JokeName { get; set; }
+        public string JokeAuthor { get; set; }
         public string JokeSetup { get; set; }
         public string JokePunchline { get; set; }
         public string JokeTagsUnified { get; set; }
-        public DateTime DateTime { get; set; }
+
         public AddDlg()
         {
             InitializeComponent();
-
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-                JokeName = tBJoke.Text
+            JokeName = tBName.Text;
+            JokeSetup = tBJoke.Text;
+            JokePunchline = tBPunchline.Text;
+            JokeTagsUnified = tBTags.Text;
+            JokeAuthor = tBAuthor.Text;
+
+            DialogResult = true;
         }
     }
 }
