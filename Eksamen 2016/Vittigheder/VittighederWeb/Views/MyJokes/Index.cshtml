@@ -35,7 +35,9 @@
                         {
                             foreach (var tag in joke.Tags.Split(','))
                             {
-                                <span class="label label-default">@tag</span>
+                                <a href="/TagSearch/Search?query=@tag">
+                                    <span class="label label-default">@tag</span>
+                                </a>
                             }
                         }
                     </td>
