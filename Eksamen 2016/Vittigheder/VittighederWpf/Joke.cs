@@ -25,5 +25,6 @@ namespace VittighederWpf
         public string Source { get; set; }
         public string Setup { get; set; }
         public string Punchline { get; set; }
+        public bool IsRiddle { get; set; }
     }
 }

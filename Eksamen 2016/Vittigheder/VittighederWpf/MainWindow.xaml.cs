@@ -28,7 +28,32 @@ namespace VittighederWpf
 
         private void LbJokes_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            string selected = lbJokes.SelectedItem.ToString();
+
+            var selected = (ListBox)sender;
+            object item = selected.SelectedItem;
+
+            //Query for name in Json file
+            /*
+            var q = from item in jsonJokes
+                    where item.Name ==  selected
+                    select item;
+
+            if (q.Count() > 1)
+            {
+                throw new ArgumentException("Something went wrong")
+            }
+
+            var joke = q.First();
+
+            jokeDlg dlg = new jokeDlg(joke.Name, joke.Setup, joke.tags);
+
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            dlg.ShowDialog(); //Modal dialog
+
+            */
+
+
 
         }
     }
