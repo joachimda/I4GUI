@@ -29,5 +29,10 @@ namespace VittighederWpf
             InitializeComponent();
 
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+                JokeName = tBJoke.Text
+        }
     }
 }
