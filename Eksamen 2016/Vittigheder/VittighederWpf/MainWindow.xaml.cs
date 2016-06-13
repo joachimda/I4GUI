@@ -26,16 +26,10 @@ namespace VittighederWpf
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void LbJokes_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            string selected = lbJokes.SelectedItem.ToString();
 
-            jokeDlg jdlg = new jokeDlg(sender.ToString(), "This is setup", new List<string>());
-            
         }
     }
 }
