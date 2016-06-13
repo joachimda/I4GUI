@@ -87,10 +87,7 @@ namespace VittighederWpf
             
             Jokes jokes = JsonConvert.DeserializeObject<Jokes>(jsonIn);
 
-            foreach (Joke joke in this)
-            {
-                Remove(joke);
-            }
+            Clear();
 
             foreach (Joke joke in jokes)
             {

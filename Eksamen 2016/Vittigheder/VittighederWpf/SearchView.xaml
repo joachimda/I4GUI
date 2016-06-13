@@ -10,24 +10,28 @@
         <local:Jokes x:Name="JokeContext"></local:Jokes>
     </Window.DataContext>
 
-    <Grid Height="247" VerticalAlignment="Bottom" Margin="0,0,0,22">
+    <Grid Margin="0,0,0,8">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="39*"/>
-            <ColumnDefinition Width="107*"/>
+            <ColumnDefinition Width="78*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="129*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="27*"/>
             <RowDefinition Height="57*"/>
             <RowDefinition Height="27*"/>
             <RowDefinition Height="26*"/>
-            <RowDefinition Height="110*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="45*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Results" Margin="10,6,10,5" />
-        <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="Name" Name="lsbxSearch" Margin="10,8" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <TextBlock Text="Joke: " Grid.Row="2" Grid.Column="0" Margin="10,5,10,6"/>
-        <TextBlock x:Name="tBJoke" Grid.Column="0" Grid.Row="3" Margin="5" Text="{Binding Path=Name}" />
-
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Results" Margin="5" />
+        <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="Name" Name="lsbxSearch" Margin="5" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <TextBlock Text="Joke: " Grid.Row="2" Grid.Column="0" Margin="5"/>
+        <TextBlock x:Name="tBJoke" Grid.Column="0" Grid.Row="3" Margin="5,5,10,5" Text="{Binding Path=Setup}" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+        <TextBlock Text="Punchline: " Grid.Row="5" Grid.Column="0" Margin="5"></TextBlock>
+        <TextBlock x:Name="tBPunchline" Grid.Column="0" Grid.Row="6" Margin="5" Text="{Binding Path=Punchline}" Grid.ColumnSpan="3"/>
 
         <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="81*"/>

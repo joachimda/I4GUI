@@ -22,7 +22,11 @@ namespace VittighederWpf
         public SearchView(Jokes jokes)
         {
             InitializeComponent();
-            JokeContext = jokes;
+
+            foreach (var joke in jokes)
+            {
+                JokeContext.Add(joke);
+            }
         }
     }
 }

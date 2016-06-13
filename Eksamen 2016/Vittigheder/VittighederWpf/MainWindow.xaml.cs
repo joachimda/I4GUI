@@ -25,7 +25,12 @@ namespace VittighederWpf
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Eventhandler for the Listbox with jokes.
+        /// Opens RiddleDialog if Joke is a riddle and a JokeDialog if not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LbJokes_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var selected = (ListBox)sender;
@@ -52,6 +57,11 @@ namespace VittighederWpf
             }
         }
 
+        /// <summary>
+        /// Eventhandler for Search button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             string tag = tbSearch.Text;
