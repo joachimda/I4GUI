@@ -26,7 +26,7 @@ namespace VittighederWpf
 
         public ICommand AddCommand
         {
-            get { return _addCommand ?? (_addCommand = new RelayCommand())}
+            get { return _addCommand ?? (_addCommand = new RelayCommand(AddJoke)); }
         }
 
         private void AddJoke()

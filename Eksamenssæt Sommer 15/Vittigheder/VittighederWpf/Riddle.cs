@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace VittighederWpf
 {
     [Serializable]
-    class Riddle : IJoke
+    public class Riddle
     {
         public Riddle(string name, List<string> tags, string source, string setup, string punchline)
         {
