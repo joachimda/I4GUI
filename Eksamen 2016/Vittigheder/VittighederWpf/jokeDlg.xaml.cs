@@ -24,7 +24,6 @@ namespace VittighederWpf
             InitializeComponent();
             tBAuthor.Text = author;
             tBJoke.Text = setup;
-
             lsbxTags.ItemsSource = tags;
         }
     }

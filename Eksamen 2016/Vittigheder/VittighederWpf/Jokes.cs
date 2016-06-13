@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
@@ -53,17 +54,20 @@ namespace VittighederWpf
                     tagsList.Add(item);
                 }
 
-                Add(new Joke(dlg.JokeName, tagsList, dlg.JokeAuthor,dlg.JokeSetup, dlg.JokePunchline));
+                Add(new Joke(dlg.JokeName, tagsList, dlg.JokeAuthor, dlg.JokeSetup, dlg.JokePunchline));
                 NotifyPropertyChanged("Count");
                 CurrentIndex = Count - 1;
             }
         }
 
-        public ICommand LoadCommand { get
+        public ICommand LoadCommand
         {
-            return _loadCommand ?? (_loadCommand = new RelayCommand(LoadFileCommand_Execute));}
+            get
+            {
+                return _loadCommand ?? (_loadCommand = new RelayCommand(LoadFileCommand_Execute));
+            }
         }
-        
+
         public ICommand SaveCommand
         {
             get { return _SaveCommand ?? (_SaveCommand = new RelayCommand(SaveFileCommand_Execute)); }
@@ -71,7 +75,9 @@ namespace VittighederWpf
 
         private void LoadFileCommand_Execute()
         {
-            
+            List<Joke> jokes = new List<Joke>();
+            string jsonIn = File.ReadAllText(_path);
+            jokes = JsonConvert.DeserializeObject<List<Joke>>(jsonIn);
         }
 
         private void SaveFileCommand_Execute()

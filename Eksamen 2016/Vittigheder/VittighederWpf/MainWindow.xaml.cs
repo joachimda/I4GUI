@@ -28,7 +28,6 @@ namespace VittighederWpf
 
         private void LbJokes_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //    Jokes j = new Jokes();
             var selected = (ListBox)sender;
 
             Joke selectedItem = (Joke)selected.SelectedItem;
@@ -39,27 +38,24 @@ namespace VittighederWpf
 
             if (selectedItem.IsRiddle)
             {
-                riddleDlg dlg = new riddleDlg(author, setup,punchline,tags);
-                dlg.Owner = this;
-                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                dlg.ShowDialog();
+                riddleDlg dialog = new riddleDlg(author, setup,punchline,tags);
+                dialog.Owner = this;
+                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                dialog.ShowDialog(); //Modal dialog
             }
-
             else
             {
-                jokeDlg dlg = new jokeDlg(author, setup, tags);
-
-                dlg.Owner = this;
-                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                dlg.ShowDialog(); //Modal dialog
+                jokeDlg dialog = new jokeDlg(author, setup, tags);
+                dialog.Owner = this;
+                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                dialog.ShowDialog(); //Modal dialog
             }
-            
-
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            string tag = tbSearch.Text;
+            JokeContext.
         }
     }
 }
