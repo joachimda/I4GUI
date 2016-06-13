@@ -200,6 +200,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyJokesController.cs" />
+    <Compile Include="Controllers\TagSearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -274,6 +275,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\MyJokes\Index.cshtml" />
     <Content Include="Views\CreateJoke\Index.cshtml" />
+    <Content Include="Views\CreateJoke\CreateSuccess.cshtml" />
+    <Content Include="Views\CreateJoke\Error.cshtml" />
+    <Content Include="Views\TagSearch\Index.cshtml" />
+    <Content Include="Views\TagSearch\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

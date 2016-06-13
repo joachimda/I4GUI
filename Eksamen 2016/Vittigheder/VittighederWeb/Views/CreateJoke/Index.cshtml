@@ -6,3 +6,16 @@
 
 <h2>Opret en joke - Find den frem senere</h2>
 
+<form action="/CreateJoke/Create" class="form-group" method="post">
+    <label for="jokeText" class="control-label">Skriv en joke</label>
+    <input class="form-control" name="jokeText" id="jokeText" type="text" required="required"> <br/>
+
+    <label for="author" class="control-label">Forfatter</label>
+    <input class="form-control" name="author" id="author" type="text" required="required"> <br/>
+
+    <label for="tags" class="control-label">Tags - Adskil med komma</label>
+    <input class="form-control" name="tags" id="tags" type="text" required="required"> <br />
+
+    <button type="submit" class="btn btn-primary">Submit rule</button>
+</form>
+

@@ -197,6 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CakeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SchemaController.cs" />
@@ -276,6 +277,7 @@
     <Content Include="Views\Schema\Schema.cshtml" />
     <Content Include="Views\Schema\MedicineSubmit.cshtml" />
     <Content Include="Views\Schema\Error.cshtml" />
+    <Content Include="Views\Cake\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
