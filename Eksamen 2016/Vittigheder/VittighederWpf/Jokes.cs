@@ -44,8 +44,8 @@ namespace VittighederWpf
 
             if (dlg.ShowDialog() == true)
             {
-                string[] tagArray = {};
-                tagArray = new[] {string.Join(",", dlg.JokeTagsUnified)};
+                string[] tagArray = dlg.JokeTagsUnified.Split(',');
+
                 List<string> tagsList = new List<string>();
 
                 foreach (var item in tagArray)
