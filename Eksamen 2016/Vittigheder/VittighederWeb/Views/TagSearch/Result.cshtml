@@ -1,4 +1,5 @@
-﻿@using VittighederWeb.Tools
+﻿@using System.Linq
+@using VittighederWeb.Tools
 
 @{
     ViewBag.Title = "Result";
@@ -22,6 +23,7 @@
             var list = jsonToolbox.DeSerialize();
 
             var q = from item in list
+                    where item.Tags.Contains((string) ViewData["id"])
                     select item;
 
             foreach (var joke in q.Reverse())
