@@ -39,6 +39,7 @@ namespace VittighederWeb.Tools
             {
                 throw;
             }
+            return joke;
         } 
     }
 }
