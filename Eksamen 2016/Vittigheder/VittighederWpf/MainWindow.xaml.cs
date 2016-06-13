@@ -23,6 +23,7 @@ namespace VittighederWpf
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -32,7 +33,9 @@ namespace VittighederWpf
 
         private void LbJokes_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-                
+
+            jokeDlg jdlg = new jokeDlg(sender.ToString(), "This is setup", new List<string>());
+            
         }
     }
 }

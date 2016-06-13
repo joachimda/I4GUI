@@ -19,9 +19,14 @@ namespace VittighederWpf
     /// </summary>
     public partial class jokeDlg : Window
     {
-        public jokeDlg()
+        public jokeDlg(string author, string setup, List<string> tags )
         {
             InitializeComponent();
+            tBAuthor.Text = author;
+            tBJoke.Text = setup;
+
+            lsbxTags.ItemsSource = tags;
         }
     }
 }
+

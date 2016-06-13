@@ -1,15 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:VittighederWpf">
+    
     <Style TargetType="Button">
-        <Setter Property="Margin" Value="5"></Setter>
-        <Setter Property="Background" Value="Cornsilk"></Setter>
-    </Style>
-    <Style TargetType="TabControl">
         <Setter Property="Background" Value="DarkOliveGreen"></Setter>
     </Style>
-    <Style TargetType="TabItem">
-        <Setter Property="Background" Value="OliveDrab"></Setter>
-    </Style>
-
+    
 </ResourceDictionary>
