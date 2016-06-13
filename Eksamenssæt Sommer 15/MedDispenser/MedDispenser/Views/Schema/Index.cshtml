@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add a medicine rule for your plan!</h2>
+
+<form action="/Schema/Create" class="form-group" method="post">
+    <label for="type" class="control-label">Medicine Type</label>
+    <input class="form-control" name="type" id="type" type="text" required="required"> <br/>
+
+    <label for="comment" class="control-label">Comment</label>
+    <input class="form-control" name="comment" id="comment" type="text" required="required"> <br/>
+
+    <label for="time" class="control-label">Time of the day</label>
+    <input class="form-control" name="time" id="time" type="text" required="required"> <br/>
+
+    <button type="submit" class="btn btn-primary">Submit rule</button>
+</form>
+
