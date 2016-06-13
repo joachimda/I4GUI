@@ -23,7 +23,7 @@ namespace VittighederWpf
         public MainWindow()
         {
             InitializeComponent();
-            JokeContext.GenerateDummyData(1000000);
+            JokeContext.GenerateDummyData(3);
         }
 
         /// <summary>
