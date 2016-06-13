@@ -26,5 +26,19 @@ namespace VittighederWeb.Tools
                 streamWriter.Close();
             }
         }
+
+        public List<Joke> DeSerialize()
+        {
+            List<Joke> joke = new List<Joke>();
+            try
+            {
+                string jsonIn = File.ReadAllText(_path);
+                joke = JsonConvert.DeserializeObject<List<Joke>>(jsonIn);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        } 
     }
 }
