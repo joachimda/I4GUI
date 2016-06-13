@@ -44,7 +44,9 @@ namespace VittighederWpf
                     Owner = this,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
                 };
-                dialog.ShowDialog(); //Modal dialog
+
+                //Modal dialog
+                dialog.ShowDialog();
             }
             else
             {
@@ -53,7 +55,9 @@ namespace VittighederWpf
                     Owner = this,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
                 };
-                dialog.ShowDialog(); //Modal dialog
+
+                //Modal dialog
+                dialog.ShowDialog(); 
             }
         }
 
@@ -84,6 +88,7 @@ namespace VittighederWpf
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
 
+            //Modeless dialog
             sw.Show();
 
         }
