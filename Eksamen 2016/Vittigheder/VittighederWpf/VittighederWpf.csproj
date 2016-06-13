@@ -99,7 +99,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="lolCoffee.jpg" />
+    <Resource Include="images\header-man.jpg" />
+    <Resource Include="images\lolCoffee.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

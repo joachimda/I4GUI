@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VittighederWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Joke-A-Lot" Height="350" Width="525">
+    <Window.DataContext>
+        <local:Jokes></local:Jokes>
+    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="273*"/>
@@ -16,17 +20,30 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="lolCoffee.jpg" Grid.Column="1" VerticalAlignment="Top"></Image>
+        <Image Source="images/lolCoffee.jpg" Grid.Column="1" VerticalAlignment="Top"></Image>
         <Button x:Name="btnLog" Content="Show log" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="button_Click" Margin="10" Width="239" Height="26" />
         <TabControl x:Name="tabControl" Grid.RowSpan="2" Margin="0,0,0,10">
             <TabItem Header="Main">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btnAdd" Grid.Column="0" Grid.RowSpan="1" Content="Add Joke" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" Width="150"/>
-                    <Button x:Name="btnSearch" Content="Search jokes" HorizontalAlignment="Left" Margin="43,53,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Button x:Name="btnAdd" Grid.Column="0" Grid.RowSpan="1" Content="Add Joke" HorizontalAlignment="Left" Margin="43,24,0,0" VerticalAlignment="Top" Width="160" Height="60"/>
+                    <Button x:Name="btnSearch" Content="Search jokes" HorizontalAlignment="Left" Margin="43,140,0,0" VerticalAlignment="Top" Width="160" Height="60"/>
                 </Grid>
             </TabItem>
             <TabItem Header="About">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock x:Name="aboutBlock" HorizontalAlignment="Left" Height="261" Margin="10,10,0,0" TextWrapping="Wrap" Text="Joke-A-Lot Ultimate Edition 2016" VerticalAlignment="Top" Width="232"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="All Jokes">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="221*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="images/header-man.jpg" Margin="0,0,0,8"/>
+                    <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True"
+                             DisplayMemberPath="Setup" x:Name="lbJokes" Grid.Row="1"/>
+                </Grid>
             </TabItem>
         </TabControl>
 

@@ -17,7 +17,7 @@ namespace VittighederWpf
     {
         public Jokes()
         {
-            if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
+            //if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
                 // In Design mode
                 Add(new Joke("kylling1", new List<string>(new string[] { "gåde", "kylling", "plat" }), "PHP-Bog", "Hvorfor gik kyllingen over vejen", "For at komme over på den anden side"));
