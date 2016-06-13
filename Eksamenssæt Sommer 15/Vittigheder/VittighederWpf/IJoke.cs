@@ -12,6 +12,5 @@ namespace VittighederWpf
         string Name { get; set; }
         List<string> Tags { get; set; }
         string Source { get; set; }
-        string JokeText { get; set; }
     }
 }
