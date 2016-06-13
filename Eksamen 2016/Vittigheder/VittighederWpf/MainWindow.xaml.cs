@@ -55,7 +55,23 @@ namespace VittighederWpf
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             string tag = tbSearch.Text;
-            JokeContext.
+            Jokes jokes = new Jokes();
+
+            foreach (var joke in JokeContext)
+            {
+                if (joke.ContainsTag(tag))
+                {
+                    jokes.Add(joke);
+                }
+            }
+
+
+            SearchView sw = new SearchView(jokes);
+
+            sw.Owner = this;
+            sw.WindowStartupLocation= WindowStartupLocation.CenterOwner;
+            sw.Show();
+
         }
     }
 }

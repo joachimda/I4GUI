@@ -16,13 +16,13 @@ using Newtonsoft.Json;
 
 namespace VittighederWpf
 {
-    class Jokes : ObservableCollection<Joke>, INotifyPropertyChanged
+    public class Jokes : ObservableCollection<Joke>, INotifyPropertyChanged
     {
         private readonly string _path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\wpfData.json";
 
         public Jokes()
         {
-            //if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
+            if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
                 // In Design mode
                 Add(new Joke("kylling1", new List<string>(new string[] { "gåde", "kylling", "plat" }), "PHP-Bog", "Hvorfor gik kyllingen over vejen", "For at komme over på den anden side"));
@@ -75,9 +75,28 @@ namespace VittighederWpf
 
         private void LoadFileCommand_Execute()
         {
-            List<Joke> jokes = new List<Joke>();
-            string jsonIn = File.ReadAllText(_path);
-            jokes = JsonConvert.DeserializeObject<List<Joke>>(jsonIn);
+            string jsonIn = "";
+            try
+            {
+                jsonIn = File.ReadAllText(_path);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
+            Jokes jokes = JsonConvert.DeserializeObject<Jokes>(jsonIn);
+
+            foreach (Joke joke in this)
+            {
+                Remove(joke);
+            }
+
+            foreach (Joke joke in jokes)
+            {
+                Add(joke);
+            }
+
         }
 
         private void SaveFileCommand_Execute()
@@ -89,7 +108,7 @@ namespace VittighederWpf
                 streamWriter.Close();
             }
         }
-
+        
         #region Properties
         int currentIndex = -1;
         public int CurrentIndex

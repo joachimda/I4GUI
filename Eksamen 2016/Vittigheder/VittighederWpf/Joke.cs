@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VittighederWpf
 {
@@ -32,5 +33,19 @@ namespace VittighederWpf
         public string Setup { get; set; }
         public string Punchline { get; set; }
         public bool IsRiddle { get; set; }
+
+        public bool ContainsTag(string tag)
+        {
+            foreach (var item in Tags)
+            {
+                if (item.Contains(tag))
+                {
+                    return true;
+                }
+            }
+            return false;
+
+            //return Tags.Any(item => item.Contains(tag));
+        }
     }
 }
