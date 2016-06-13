@@ -24,7 +24,8 @@ namespace VittighederWeb
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      //"~/Content/bootstrap.css",
+                      "~/Content/flatly.min.css",
                       "~/Content/site.css"));
         }
     }
