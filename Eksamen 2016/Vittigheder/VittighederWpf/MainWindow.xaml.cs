@@ -23,6 +23,7 @@ namespace VittighederWpf
         public MainWindow()
         {
             InitializeComponent();
+            JokeContext.GenerateDummyData(1000000);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace VittighederWpf
 
             if (selectedItem.IsRiddle)
             {
-                riddleDlg dialog = new riddleDlg(author, setup,punchline,tags);
+                riddleDlg dialog = new riddleDlg(author, setup, punchline, tags);
                 dialog.Owner = this;
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 dialog.ShowDialog(); //Modal dialog
@@ -62,26 +63,52 @@ namespace VittighederWpf
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             string tag = tbSearch.Text;
-            Jokes jokes = new Jokes();
 
-            foreach (var joke in JokeContext)
+            Jokes jokes = await Task.Run(() =>
             {
-                if (joke.ContainsTag(tag))
-                {
-                    jokes.Add(joke);
-                }
-            }
+                Jokes tmpJokes = new Jokes();
 
+                foreach (var joke in JokeContext)
+                {
+                    if (joke.ContainsTag(tag))
+                    {
+                        tmpJokes.Add(joke);
+                    }
+                }
+
+                return tmpJokes;
+            });
+
+            /*Run in main thread*/
+            //Jokes jokes = new Jokes();
+
+            //foreach (var joke in JokeContext)
+            //{
+            //    if (joke.ContainsTag(tag))
+            //    {
+            //        jokes.Add(joke);
+            //    }
+            //}
 
             SearchView sw = new SearchView(jokes);
 
             sw.Owner = this;
-            sw.WindowStartupLocation= WindowStartupLocation.CenterOwner;
+            sw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             sw.Show();
 
+        }
+
+        private void LbJokes_OnMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Do you wish to delete this item?", "Delete joke", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                JokeContext.Remove((Joke)lbJokes.SelectedItem);
+            }
         }
     }
 }

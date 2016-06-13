@@ -20,19 +20,20 @@ namespace VittighederWpf
     {
         private readonly string _path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\wpfData.json";
 
-        public Jokes()
+        public void GenerateDummyData(int amount)
         {
-            if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
+            for (int i = 0; i < amount; i++)
             {
-                // In Design mode
                 Add(new Joke("kylling1", new List<string>(new string[] { "gåde", "kylling", "plat" }), "PHP-Bog", "Hvorfor gik kyllingen over vejen", "For at komme over på den anden side"));
-                Add(new Joke("bar1", new List<string>(new string[] { "bar", "something", "plat" }), "internet", "Some dude walks into a bar..."));
+                Add(new Joke("bar1", new List<string>(new string[] { "bar", "something", "plat", "pik" }), "internet", "Some dude walks into a bar..."));
             }
         }
 
+
+
+        #region Add joke to collection
+
         ICommand _addCommand;
-        ICommand _SaveCommand;
-        ICommand _loadCommand;
 
         public ICommand AddCommand
         {
@@ -60,6 +61,11 @@ namespace VittighederWpf
             }
         }
 
+        #endregion
+
+        #region Load with Json Deserialize
+        ICommand _loadCommand;
+
         public ICommand LoadCommand
         {
             get
@@ -68,24 +74,25 @@ namespace VittighederWpf
             }
         }
 
-        public ICommand SaveCommand
-        {
-            get { return _SaveCommand ?? (_SaveCommand = new RelayCommand(SaveFileCommand_Execute)); }
-        }
-
         private void LoadFileCommand_Execute()
         {
+            if (!File.Exists(_path))
+            {
+                MessageBox.Show("No saved jokes was found.", "No file", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             string jsonIn = "";
+            Jokes jokes = null;
             try
             {
                 jsonIn = File.ReadAllText(_path);
+                jokes = JsonConvert.DeserializeObject<Jokes>(jsonIn);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            
-            Jokes jokes = JsonConvert.DeserializeObject<Jokes>(jsonIn);
 
             Clear();
 
@@ -94,6 +101,16 @@ namespace VittighederWpf
                 Add(joke);
             }
 
+        }
+        #endregion
+
+        #region Save with Json Serialize
+
+        ICommand _SaveCommand;
+
+        public ICommand SaveCommand
+        {
+            get { return _SaveCommand ?? (_SaveCommand = new RelayCommand(SaveFileCommand_Execute)); }
         }
 
         private void SaveFileCommand_Execute()
@@ -105,7 +122,9 @@ namespace VittighederWpf
                 streamWriter.Close();
             }
         }
-        
+
+        #endregion
+
         #region Properties
         int currentIndex = -1;
         public int CurrentIndex
@@ -124,6 +143,11 @@ namespace VittighederWpf
         #endregion 
 
         public new event PropertyChangedEventHandler PropertyChanged;
+
+        public void Update()
+        {
+            NotifyPropertyChanged();
+        }
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {

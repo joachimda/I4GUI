@@ -53,7 +53,7 @@
                     </Grid.RowDefinitions>
                     <Image Source="images/header-man.jpg" Margin="0,0,0,8"/>
                     <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True"
-                             DisplayMemberPath="Name" x:Name="lbJokes" Grid.Row="1" MouseDoubleClick="LbJokes_OnMouseDoubleClick"/>
+                             DisplayMemberPath="Name" x:Name="lbJokes" Grid.Row="1" MouseDoubleClick="LbJokes_OnMouseDoubleClick" MouseRightButtonUp="LbJokes_OnMouseRightButtonUp"/>
                 </Grid>
             </TabItem>
         </TabControl>
