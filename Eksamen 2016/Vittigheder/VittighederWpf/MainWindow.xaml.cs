@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,9 @@ namespace VittighederWpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Main window - Init and generates dummy data
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -28,74 +32,73 @@ namespace VittighederWpf
         {
             var selected = (ListBox)sender;
 
-            Joke selectedItem = (Joke)selected.SelectedItem;
-            String author = selectedItem.Source;
-            string setup = selectedItem.Setup;
+            var selectedItem = (Joke)selected.SelectedItem;
+            var author = selectedItem.Source;
+            var setup = selectedItem.Setup;
             List<string> tags = selectedItem.Tags;
-            string punchline = selectedItem.Punchline;
+            var punchline = selectedItem.Punchline;
 
             if (selectedItem.IsRiddle)
             {
-                riddleDlg dialog = new riddleDlg(author, setup, punchline, tags);
-                dialog.Owner = this;
-                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                var dialog = new riddleDlg(author, setup, punchline, tags)
+                {
+                    Owner = this,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
                 dialog.ShowDialog(); //Modal dialog
             }
             else
             {
-                jokeDlg dialog = new jokeDlg(author, setup, tags);
-                dialog.Owner = this;
-                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                var dialog = new jokeDlg(author, setup, tags)
+                {
+                    Owner = this,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
                 dialog.ShowDialog(); //Modal dialog
             }
         }
 
         /// <summary>
-        /// Eventhandler for Search button
+        /// Eventhandler for Search button - Calls IsTagFound on Joke object
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            string tag = tbSearch.Text;
+            var tag = tbSearch.Text;
 
-            Jokes jokes = await Task.Run(() =>
+            var jokes = await Task.Run(() =>
             {
-                Jokes tmpJokes = new Jokes();
+                var tmpJokes = new Jokes();
 
-                foreach (var joke in JokeContext)
+                foreach (var joke in JokeContext.Where(joke => joke.IsTagFound(tag)))
                 {
-                    if (joke.ContainsTag(tag))
-                    {
-                        tmpJokes.Add(joke);
-                    }
+                    tmpJokes.Add(joke);
                 }
 
                 return tmpJokes;
             });
 
-            /*Run in main thread*/
-            //Jokes jokes = new Jokes();
+            var sw = new SearchView(jokes)
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
 
-            //foreach (var joke in JokeContext)
-            //{
-            //    if (joke.ContainsTag(tag))
-            //    {
-            //        jokes.Add(joke);
-            //    }
-            //}
-
-            SearchView sw = new SearchView(jokes);
-
-            sw.Owner = this;
-            sw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             sw.Show();
 
         }
 
+
+        /// <summary>
+        /// Eventhandler for Listbox with jokes.
+        /// Enables rigth-clicking on a list item to delete it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LbJokes_OnMouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Do you wish to delete this item?", "Delete joke", MessageBoxButton.YesNo);
+            var result = MessageBox.Show("Do you wish to delete this item?", "Delete joke", MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
             {

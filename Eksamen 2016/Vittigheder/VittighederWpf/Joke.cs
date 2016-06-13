@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VittighederWpf
 {
@@ -64,16 +65,9 @@ namespace VittighederWpf
         /// </summary>
         /// <param name="tag">The tag to search for</param>
         /// <returns>True if found false if not</returns>
-        public bool ContainsTag(string tag)
+        public bool IsTagFound(string tag)
         {
-            foreach (var item in Tags)
-            {
-                if (item.Contains(tag))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return Tags.Any(item => item.Contains(tag));
         }
     }
 }
