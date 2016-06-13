@@ -23,7 +23,7 @@
             var list = jsonToolbox.DeSerialize();
 
             var q = from item in list
-                    where item.Tags.Contains((string) ViewData["id"])
+                    where item.Tags != null && item.Tags.Contains((string) ViewData["id"])
                     select item;
 
             foreach (var joke in q.Reverse())
