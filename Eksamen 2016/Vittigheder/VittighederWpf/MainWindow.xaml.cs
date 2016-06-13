@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,14 @@ namespace VittighederWpf
         {
             InitializeComponent();
             JokeContext.GenerateDummyData(3);
+            Closing += MainWindow_Closing;
+            MessageBox.Show(Properties.Settings.Default.pcName);
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Properties.Settings.Default.pcName = Environment.MachineName;
+            Properties.Settings.Default.Save();
         }
 
         /// <summary>
