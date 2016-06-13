@@ -18,34 +18,35 @@
         </tr>
     </thead>
     <tbody>
-        @{
-            JsonToolbox jsonToolbox = new JsonToolbox();
-            var list = jsonToolbox.DeSerialize();
+    
+    @{
+        JsonToolbox jsonToolbox = new JsonToolbox();
+        var list = jsonToolbox.DeSerialize();
 
-            var q = from item in list
-                    where item.Tags != null && item.Tags.Contains((string)ViewData["id"])
-                    select item;
+        var q = from item in list
+            where item.Tags != null && item.Tags.Contains((string) ViewData["id"])
+            select item;
 
-            foreach (var joke in q.Reverse())
-            {
-                <tr>
-                    <td>@joke.Text</td>
-                    <td>@joke.Author</td>
-                    <td>@joke.DateTime</td>
-                    <td>
-                        @if (joke.Tags != null)
+        foreach (var joke in q.Reverse())
+        {
+            <tr>
+                <td>@joke.Text</td>
+                <td>@joke.Author</td>
+                <td>@joke.DateTime</td>
+                <td>
+                    @if (joke.Tags != null)
+                    {
+                        foreach (var tag in joke.Tags.Split(','))
                         {
-                            foreach (var tag in joke.Tags.Split(','))
-                            {
-                                <a href="/TagSearch/Search?query=@tag">
-                                    <span class="label label-default">@tag</span>
-                                </a>
-                            }
+                            <a href="/TagSearch/Search?query=@tag">
+                                <span class="label label-default">@tag</span>
+                            </a>
                         }
-                    </td>
-                </tr>
-            }
+                    }
+                </td>
+            </tr>
         }
+    }
     </tbody>
 </table>
 
