@@ -4,9 +4,13 @@ using System.Collections.Generic;
 namespace VittighederWpf
 {
     [Serializable]
-    public class Riddle
+    public class Joke
     {
-        public Riddle(string name, List<string> tags, string source, string setup, string punchline)
+        public Joke()
+        {
+            
+        }
+        public Joke(string name, List<string> tags, string source, string setup, string punchline)
         {
             Name = name;
             Tags = tags;
