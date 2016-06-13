@@ -26,7 +26,14 @@ namespace VittighederWpf
 
         public ICommand AddCommand
         {
-            
+            get { return _addCommand ?? (_addCommand = new RelayCommand())}
+        }
+
+        private void AddJoke()
+        {
+            Add(new Joke());
+            NotifyPropertyChanged("Count");
+            CurrentIndex = Count - 1;
         }
 
     }
