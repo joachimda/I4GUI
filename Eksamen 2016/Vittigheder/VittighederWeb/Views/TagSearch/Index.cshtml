@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Søg efter jokes ved at angive et tag</h2>
+
+<form action="/TagSearch/Search" method="get">
+    <label for="query" class="control-label">Skriv et tag</label>
+    <input type="text" name="query" class="form-control" autofocus />
+    <br />
+    <button type="submit" class="btn btn-primary">Go!</button>
+</form>
