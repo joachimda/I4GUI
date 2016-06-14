@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Newtonsoft.Json;
@@ -15,12 +16,19 @@ namespace VittighederWpf
 
         #region Dummy data generation
 
+        /// <summary>
+        /// Generates dummy data
+        /// </summary>
+        /// <param name="amount"></param>
         public void GenerateDummyData(int amount)
         {
             for (int i = 0; i < amount; i++)
             {
-                Add(new Joke("kylling1", new List<string>(new string[] { "gåde", "kylling", "plat" }), "PHP-Bog", "Hvorfor gik kyllingen over vejen", "For at komme over på den anden side"));
-                Add(new Joke("bar1", new List<string>(new string[] { "bar", "something", "plat" }), "internet", "Some dude walks into a bar..."));
+                Add(new Joke("Kyllinge Joke1", new List<string>(new string[] { "gåde", "kylling" }), "PHP-Bog", "Hvorfor gik kyllingen over vejen?", "For at komme over på den anden side"));
+                Add(new Joke("Kyllinge Joke2", new List<string>(new string[] { "gåde", "kylling", "kalkun" }), "Arthur", "Hvorfor gik kalkunen over vejen?", "Fordi det var kyllingens fridag."));
+                Add(new Joke("Kyllinge Joke3", new List<string>(new string[] { "gåde", "kylling", "fasan" }), "Sofie", "Hvorfor gik fasanen over vejen?", "For at bevise at den ikke var en kylling."));
+                Add(new Joke("Kyllinge Joke4", new List<string>(new string[] { "gåde", "kylling", "matematik" }), "Wikipedia", "Hvorfor gik kyllingen over Möbius bånd?", "For at komme over på den samme side."));
+                Add(new Joke("Bar Joke1", new List<string>(new string[] { "bar", "something", "plat" }), "internet", "Someone walks into a bar..."));
             }
         }
 
@@ -28,44 +36,29 @@ namespace VittighederWpf
 
         #region Add joke to collection
 
-        ICommand _addCommand;
+        private ICommand _addCommand;
 
-        public ICommand AddCommand
-        {
-            get { return _addCommand ?? (_addCommand = new RelayCommand(AddJoke)); }
-        }
+        public ICommand AddCommand => _addCommand ?? (_addCommand = new RelayCommand(AddJoke));
 
         private void AddJoke()
         {
             AddDialog dialog = new AddDialog();
 
-            if (dialog.ShowDialog() == true)
-            {
-                string[] tagArray = dialog.JokeTagsUnified.Split(',');
+            if (dialog.ShowDialog() != true) return;
+            string[] tagArray = dialog.JokeTagsUnified.Split(',');
 
-                List<string> tagsList = new List<string>();
+            List<string> tagsList = tagArray.ToList();
 
-                foreach (var item in tagArray)
-                {
-                    tagsList.Add(item);
-                }
-
-                Add(new Joke(dialog.JokeName, tagsList, dialog.JokeAuthor, dialog.JokeSetup, dialog.JokePunchline));
-            }
+            Add(new Joke(dialog.JokeName, tagsList, dialog.JokeAuthor, dialog.JokeSetup, dialog.JokePunchline));
         }
 
         #endregion
 
         #region Load with Json Deserialize
-        ICommand _loadCommand;
 
-        public ICommand LoadCommand
-        {
-            get
-            {
-                return _loadCommand ?? (_loadCommand = new RelayCommand(LoadFileCommand_Execute));
-            }
-        }
+        private ICommand _loadCommand;
+
+        public ICommand LoadCommand => _loadCommand ?? (_loadCommand = new RelayCommand(LoadFileCommand_Execute));
 
         private void LoadFileCommand_Execute()
         {
@@ -75,11 +68,10 @@ namespace VittighederWpf
                 return;
             }
 
-            string jsonIn = "";
             Jokes jokes = null;
             try
             {
-                jsonIn = File.ReadAllText(_path);
+                var jsonIn = File.ReadAllText(_path);
                 jokes = JsonConvert.DeserializeObject<Jokes>(jsonIn);
             }
             catch (Exception e)
@@ -99,12 +91,9 @@ namespace VittighederWpf
 
         #region Save with Json Serialize
 
-        ICommand _SaveCommand;
+        ICommand _saveCommand;
 
-        public ICommand SaveCommand
-        {
-            get { return _SaveCommand ?? (_SaveCommand = new RelayCommand(SaveFileCommand_Execute)); }
-        }
+        public ICommand SaveCommand => _saveCommand ?? (_saveCommand = new RelayCommand(SaveFileCommand_Execute));
 
         private void SaveFileCommand_Execute()
         {
