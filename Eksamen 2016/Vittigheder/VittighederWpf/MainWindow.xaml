@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
 
         <Image Source="images/lolCoffee.jpg" Grid.Column="1" VerticalAlignment="Top"></Image>
-        <Button x:Name="btnLog" Content="Show log" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="239" Height="26" />
+        <Button x:Name="btnLog" Content="Show log" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="239" Height="26" Click="btnLog_Click" />
         <TabControl x:Name="tabControl" Grid.RowSpan="2" Margin="0,0,0,10">
             <TabItem Header="Main">
                 <Grid Background="#ffffb3">
@@ -57,6 +57,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <TextBox x:Name="tBAuthor" Grid.Column="1" Grid.Row="4" Margin="5" Grid.ColumnSpan="2" />
+        <!--<TextBox x:Name="tBAuthor" Grid.Column="1" Grid.Row="4" Margin="5" Grid.ColumnSpan="2" />-->
     </Grid>
 </Window>

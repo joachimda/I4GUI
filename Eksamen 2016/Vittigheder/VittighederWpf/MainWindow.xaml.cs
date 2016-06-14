@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,10 +46,11 @@ namespace VittighederWpf
             var setup = selectedItem.Setup;
             List<string> tags = selectedItem.Tags;
             var punchline = selectedItem.Punchline;
+            var datetime = selectedItem.Time;
 
             if (selectedItem.IsRiddle)
             {
-                var dialog = new riddleDlg(author, setup, punchline, tags)
+                var dialog = new RiddleDialog(author, setup, punchline, tags, datetime)
                 {
                     Owner = this,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -59,7 +61,7 @@ namespace VittighederWpf
             }
             else
             {
-                var dialog = new jokeDlg(author, setup, tags)
+                var dialog = new JokeDialog(author, setup, tags)
                 {
                     Owner = this,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -117,6 +119,11 @@ namespace VittighederWpf
             {
                 JokeContext.Remove((Joke)lbJokes.SelectedItem);
             }
+        }
+
+        private void btnLog_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
