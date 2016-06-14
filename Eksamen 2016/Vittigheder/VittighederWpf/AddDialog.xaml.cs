@@ -17,7 +17,7 @@ namespace VittighederWpf
     /// <summary>
     /// Interaction logic for AddDlg.xaml
     /// </summary>
-    public partial class AddDlg : Window
+    public partial class AddDialog : Window
     {
         public string JokeName { get; set; }
         public string JokeAuthor { get; set; }
@@ -25,7 +25,7 @@ namespace VittighederWpf
         public string JokePunchline { get; set; }
         public string JokeTagsUnified { get; set; }
 
-        public AddDlg()
+        public AddDialog()
         {
             InitializeComponent();
         }

@@ -61,7 +61,7 @@ namespace VittighederWpf
             }
             else
             {
-                var dialog = new JokeDialog(author, setup, tags)
+                var dialog = new JokeDialog(author, setup, tags, datetime)
                 {
                     Owner = this,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -123,7 +123,7 @@ namespace VittighederWpf
 
         private void btnLog_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("This has not been implemented", "Nope", MessageBoxButton.OK);
         }
     }
 }

@@ -58,8 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddDlg.xaml.cs">
-      <DependentUpon>AddDlg.xaml</DependentUpon>
+    <Compile Include="AddDialog.xaml.cs">
+      <DependentUpon>AddDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="JokeDialog.xaml.cs">
       <DependentUpon>JokeDialog.xaml</DependentUpon>
@@ -73,7 +73,7 @@
     <Compile Include="SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddDlg.xaml">
+    <Page Include="AddDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

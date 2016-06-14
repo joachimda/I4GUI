@@ -37,11 +37,11 @@ namespace VittighederWpf
 
         private void AddJoke()
         {
-            AddDlg dlg = new AddDlg();
+            AddDialog dialog = new AddDialog();
 
-            if (dlg.ShowDialog() == true)
+            if (dialog.ShowDialog() == true)
             {
-                string[] tagArray = dlg.JokeTagsUnified.Split(',');
+                string[] tagArray = dialog.JokeTagsUnified.Split(',');
 
                 List<string> tagsList = new List<string>();
 
@@ -50,7 +50,7 @@ namespace VittighederWpf
                     tagsList.Add(item);
                 }
 
-                Add(new Joke(dlg.JokeName, tagsList, dlg.JokeAuthor, dlg.JokeSetup, dlg.JokePunchline));
+                Add(new Joke(dialog.JokeName, tagsList, dialog.JokeAuthor, dialog.JokeSetup, dialog.JokePunchline));
             }
         }
 
