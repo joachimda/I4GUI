@@ -23,7 +23,10 @@ namespace VittighederWeb.Controllers
             JsonToolbox jsonToolbox = new JsonToolbox();
             List<Joke> jokes = new List<Joke>();
 
-            jokes = jsonToolbox.DeSerialize();
+            if (System.IO.File.Exists(jsonToolbox.Path))
+            {
+                jokes = jsonToolbox.DeSerialize();
+            }
 
             try
             {

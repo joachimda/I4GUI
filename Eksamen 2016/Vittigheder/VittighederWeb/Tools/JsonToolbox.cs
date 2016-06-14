@@ -10,7 +10,7 @@ namespace VittighederWeb.Tools
 {
     public class JsonToolbox
     {
-        private readonly string _path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\webData.json";
+        public readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\webData.json";
 
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace VittighederWeb.Tools
         public void Serialize(List<Joke> list)
         {
             string jsonOut = JsonConvert.SerializeObject(list);
-            using (StreamWriter streamWriter = new StreamWriter(_path))
+            using (StreamWriter streamWriter = new StreamWriter(Path))
             {
                 streamWriter.Write(jsonOut);
                 streamWriter.Close();
@@ -32,7 +32,7 @@ namespace VittighederWeb.Tools
             List<Joke> joke = new List<Joke>();
             try
             {
-                string jsonIn = File.ReadAllText(_path);
+                string jsonIn = File.ReadAllText(Path);
                 joke = JsonConvert.DeserializeObject<List<Joke>>(jsonIn);
             }
             catch (Exception)

@@ -18,35 +18,37 @@
         </tr>
     </thead>
     <tbody>
-    
-    @{
-        JsonToolbox jsonToolbox = new JsonToolbox();
-        var list = jsonToolbox.DeSerialize();
 
-        var q = from item in list
-            where item.Tags != null && item.Tags.Contains((string) ViewData["id"])
-            select item;
+        @{
+            JsonToolbox jsonToolbox = new JsonToolbox();
+            if (File.Exists(jsonToolbox.Path))
+            {
+                var list = jsonToolbox.DeSerialize();
 
-        foreach (var joke in q.Reverse())
-        {
-            <tr>
-                <td>@joke.Text</td>
-                <td>@joke.Author</td>
-                <td>@joke.DateTime</td>
-                <td>
-                    @if (joke.Tags != null)
+                var q = from item in list
+                        where item.Tags != null && item.Tags.Contains((string)ViewData["id"])
+                        select item;
+
+                foreach (var joke in q.Reverse())
+                {
+                    <tr>
+                        <td>@joke.Text</td>
+                        <td>@joke.Author</td>
+                        <td>@joke.DateTime</td>
+                        <td>
+                            @if (joke.Tags != null)
                     {
                         foreach (var tag in joke.Tags.Split(','))
                         {
-                            <a href="/TagSearch/Search?query=@tag">
-                                <span class="label label-default">@tag</span>
-                            </a>
-                        }
-                    }
-                </td>
-            </tr>
+                                    <a href="/TagSearch/Search?query=@tag">
+                                        <span class="label label-default">@tag</span>
+                                    </a>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
         }
-    }
     </tbody>
 </table>
-
