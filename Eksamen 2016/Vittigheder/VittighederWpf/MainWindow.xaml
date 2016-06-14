@@ -57,6 +57,5 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <!--<TextBox x:Name="tBAuthor" Grid.Column="1" Grid.Row="4" Margin="5" Grid.ColumnSpan="2" />-->
     </Grid>
 </Window>

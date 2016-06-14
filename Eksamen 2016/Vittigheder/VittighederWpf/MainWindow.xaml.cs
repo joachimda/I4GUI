@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +24,11 @@ namespace VittighederWpf
             MessageBox.Show(Properties.Settings.Default.pcName);
         }
 
+        /// <summary>
+        /// Save the PC name on window closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Properties.Settings.Default.pcName = Environment.MachineName;
@@ -121,6 +125,11 @@ namespace VittighederWpf
             }
         }
 
+        /// <summary>
+        /// Log information - although not implemented
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLog_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("This has not been implemented", "Nope", MessageBoxButton.OK);
